@@ -1,4 +1,4 @@
-package com.jeetprksh.reddimg.http.parser;
+package com.jeetprksh.reddimg.reddit.parser;
 
 public enum Kind {
 

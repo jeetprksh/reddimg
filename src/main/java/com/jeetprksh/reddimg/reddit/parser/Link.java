@@ -1,8 +1,8 @@
-package com.jeetprksh.reddimg.http.parser;
+package com.jeetprksh.reddimg.reddit.parser;
 
-import org.json.JSONObject;
+import org.json.simple.JSONObject;
 
-import static com.jeetprksh.reddimg.http.parser.JsonConvertor.*;
+import static com.jeetprksh.reddimg.reddit.parser.JsonConvertor.*;
 
 
 public class Link extends Thing {
@@ -28,6 +28,7 @@ public class Link extends Thing {
   private String fromId;
   private String removalReason;
   private String fromKind;
+  private String postHint;
 
   private Long gilded;
   private Long commentCount;
@@ -74,6 +75,7 @@ public class Link extends Thing {
     // setFromId(safeJsonToString(obj.get("from_id")));
     setRemovalReason(safeJsonToString(obj.get("removal_reason")));
     // setFromKind(safeJsonToString(obj.get("from_kind")));
+    setPostHint(safeJsonToString(obj.get("post_hint")));
 
     setGilded(safeJsonToLong(obj.get("gilded")));
     setCommentCount(safeJsonToLong(obj.get("num_comments")));
@@ -259,6 +261,14 @@ public class Link extends Thing {
 
   public String getFromKind() {
     return fromKind;
+  }
+
+  public String getPostHint() {
+    return postHint;
+  }
+
+  public void setPostHint(String postHint) {
+    this.postHint = postHint;
   }
 
   public void setFromKind(String fromKind) {

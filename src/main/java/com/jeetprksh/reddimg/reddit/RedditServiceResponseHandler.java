@@ -1,4 +1,4 @@
-package com.jeetprksh.reddimg.http;
+package com.jeetprksh.reddimg.reddit;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.hc.core5.http.ClassicHttpResponse;

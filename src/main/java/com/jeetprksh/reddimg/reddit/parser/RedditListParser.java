@@ -1,7 +1,7 @@
-package com.jeetprksh.reddimg.http.parser;
+package com.jeetprksh.reddimg.reddit.parser;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +10,16 @@ public class RedditListParser {
 
   public List<Thing> parse(JSONObject responseObject) {
     List<Thing> things = new ArrayList<>();
-    JSONArray thingJsonObjects = responseObject.getJSONObject("data").getJSONArray("children");
+    JSONArray thingJsonObjects = (JSONArray) ((JSONObject) responseObject.get("data")).get("children");
 
     for (Object thingObject : thingJsonObjects) {
       JSONObject thingJsonObject = (JSONObject) thingObject;
 
-      String thingKind = thingJsonObject.getString("kind");
-      JSONObject thingData = thingJsonObject.getJSONObject("data");
+      String thingKind = JsonConvertor.safeJsonToString(thingJsonObject.get("kind"));
+      Object thingData = thingJsonObject.get("data");
 
       Kind kind = Kind.isValid(thingKind);
-      Thing thing = getThing(kind, thingData);
+      Thing thing = getThing(kind, (JSONObject) thingData);
       things.add(thing);
     }
 

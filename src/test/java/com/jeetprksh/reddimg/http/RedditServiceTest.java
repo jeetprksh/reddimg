@@ -1,6 +1,7 @@
 package com.jeetprksh.reddimg.http;
 
-import com.jeetprksh.reddimg.http.parser.Thing;
+import com.jeetprksh.reddimg.reddit.RedditService;
+import com.jeetprksh.reddimg.reddit.parser.Link;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,14 +15,14 @@ class RedditServiceTest {
 
   @BeforeEach
   public void setup() {
-    redditService = new RedditService();
+    redditService = RedditService.create("pics");
   }
 
   @Test
   public void getAllSubredditThingsTest() {
     try {
-      List<Thing> things = redditService.getAllSubredditThings("asoiaf");
-      things.forEach(thing -> System.out.println(thing.getFullName()));
+      List<Link> links = redditService.getAllSubredditLinks();
+      links.forEach(link -> System.out.println(link.getTitle()));
     } catch (Exception ex) {
       ex.printStackTrace();
       fail();
