@@ -13,12 +13,10 @@ public class Downloader {
 
   private final int DEFAULT_CHUNK_SIZE = 20;
 
-  private final String subredditName;
   private final RedditService redditService;
   private final FileStore fileStore;
 
-  private Downloader(String subredditName, RedditService redditService, FileStore fileStore) {
-    this.subredditName = subredditName;
+  private Downloader(RedditService redditService, FileStore fileStore) {
     this.redditService = redditService;
     this.fileStore = fileStore;
   }
@@ -38,6 +36,6 @@ public class Downloader {
   public static Downloader createFor(String subredditName) {
     RedditService redditService = RedditService.create(subredditName);
     FileStore fileStore = FileStore.create(subredditName);
-    return new Downloader(subredditName, redditService, fileStore);
+    return new Downloader(redditService, fileStore);
   }
 }
