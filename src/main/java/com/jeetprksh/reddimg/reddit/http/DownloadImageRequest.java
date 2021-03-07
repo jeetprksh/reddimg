@@ -13,7 +13,7 @@ public class DownloadImageRequest extends RedditRequest {
   public DownloadImageRequest(String imageUrl) {
     this.imageUrl = imageUrl;
   }
-  
+
   public InputStream execute() throws IOException {
     HttpGet get = new HttpGet(this.imageUrl);
     CloseableHttpResponse response = (CloseableHttpResponse) client.execute(get);
