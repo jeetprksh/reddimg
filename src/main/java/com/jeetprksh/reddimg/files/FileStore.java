@@ -1,7 +1,8 @@
 package com.jeetprksh.reddimg.files;
 
+import com.jeetprksh.reddimg.reddit.http.model.ImageFile;
+
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,9 +15,11 @@ public class FileStore {
     this.downloadDirectory = downloadDirectory;
   }
 
-  public void createFile(String title, InputStream inputStream) throws IOException {
-    File imgFile = new File(downloadDirectory.toPath() + "/" + sanitizeFileName(title) + ".jpg");
+  public void createFile(ImageFile imageFile) throws IOException {
+    File imgFile = new File(downloadDirectory.toPath() + "/"
+            + sanitizeFileName(imageFile.getFileName()) + "." + imageFile.getExtension());
 
+    InputStream inputStream = imageFile.getFileContent();
     try(FileOutputStream outputStream = new FileOutputStream(imgFile)) {
       int read;
       byte[] bytes = new byte[1024];

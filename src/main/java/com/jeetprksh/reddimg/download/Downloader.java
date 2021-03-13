@@ -2,16 +2,14 @@ package com.jeetprksh.reddimg.download;
 
 import com.jeetprksh.reddimg.files.FileStore;
 import com.jeetprksh.reddimg.reddit.RedditService;
+import com.jeetprksh.reddimg.reddit.http.model.ImageFile;
 import com.jeetprksh.reddimg.reddit.parser.Link;
 import com.jeetprksh.reddimg.reddit.parser.PostHint;
 
-import java.io.InputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Downloader {
-
-  private final int DEFAULT_CHUNK_SIZE = 20;
 
   private final RedditService redditService;
   private final FileStore fileStore;
@@ -28,8 +26,9 @@ public class Downloader {
 
     for (Link link : links) {
       String imgUrl = link.getUrl();
-      InputStream inputStream = redditService.downloadImage(imgUrl);
-      fileStore.createFile(link.getTitle(), inputStream);
+      ImageFile imageFile = redditService.downloadImage(imgUrl);
+      imageFile.setFileName(link.getTitle());
+      fileStore.createFile(imageFile);
     }
   }
 

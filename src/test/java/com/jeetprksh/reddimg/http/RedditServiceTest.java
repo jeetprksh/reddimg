@@ -22,7 +22,7 @@ class RedditServiceTest {
   public void getAllSubredditThingsTest() {
     try {
       List<Link> links = redditService.getAllSubredditLinks();
-      links.forEach(link -> System.out.println(link.getTitle()));
+      System.out.println("Overall links found: " + links.size());
     } catch (Exception ex) {
       ex.printStackTrace();
       fail();
