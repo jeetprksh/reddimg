@@ -1,13 +1,17 @@
 package com.jeetprksh.reddimg.files;
 
+import com.jeetprksh.reddimg.logging.ReddimgLogger;
 import com.jeetprksh.reddimg.reddit.http.model.ImageFile;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Logger;
 
 public class FileStore {
+
+  private final Logger logger = ReddimgLogger.getLogger(FileStore.class);
 
   private final File downloadDirectory;
 
@@ -27,6 +31,7 @@ public class FileStore {
         outputStream.write(bytes, 0, read);
       }
     }
+    logger.info("Image file saved at " + imgFile.getAbsolutePath());
   }
 
   private String sanitizeFileName(String fileName) {

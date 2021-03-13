@@ -1,15 +1,19 @@
 package com.jeetprksh.reddimg.download;
 
 import com.jeetprksh.reddimg.files.FileStore;
+import com.jeetprksh.reddimg.logging.ReddimgLogger;
 import com.jeetprksh.reddimg.reddit.RedditService;
 import com.jeetprksh.reddimg.reddit.http.model.ImageFile;
 import com.jeetprksh.reddimg.reddit.parser.Link;
 import com.jeetprksh.reddimg.reddit.parser.PostHint;
 
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class Downloader {
+
+  private final Logger logger = ReddimgLogger.getLogger(Downloader.class);
 
   private final RedditService redditService;
   private final FileStore fileStore;
@@ -20,6 +24,7 @@ public class Downloader {
   }
 
   public void download() throws Exception {
+    logger.info("Starting Download");
     List<Link> links = redditService.getAllSubredditLinks().stream()
             .filter(link -> PostHint.IMAGE.value().equals(link.getPostHint()))
             .collect(Collectors.toList());
