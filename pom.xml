@@ -38,6 +38,11 @@
       <artifactId>guava</artifactId>
       <version>23.0</version>
     </dependency>
+    <dependency>
+      <groupId>com.jeetprksh.file.download</groupId>
+      <artifactId>batch-file-download</artifactId>
+      <version>1.0.0</version>
+    </dependency>
 
     <dependency>
       <groupId>org.junit.jupiter</groupId>

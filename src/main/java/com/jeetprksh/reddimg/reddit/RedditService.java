@@ -25,6 +25,7 @@ public class RedditService {
   private final Logger logger = ReddimgLogger.getLogger(RedditService.class);
 
   private final String DEFAULT_CHUNK_SIZE = "20";
+
   private final String subredditName;
 
   private RedditService(String subredditName) {
@@ -65,6 +66,10 @@ public class RedditService {
     logger.info("Downloading the image from " + imgUrl);
     DownloadImageRequest request = new DownloadImageRequest(imgUrl);
     return request.execute();
+  }
+
+  public String getSubredditName() {
+    return subredditName;
   }
 
   private List<Link> parseToLinks(String response) throws ParseException {
