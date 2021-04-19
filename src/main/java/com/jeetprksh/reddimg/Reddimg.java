@@ -3,13 +3,12 @@ package com.jeetprksh.reddimg;
 import com.jeetprksh.reddimg.config.ReddimgConfig;
 import com.jeetprksh.reddimg.download.Downloader;
 import com.jeetprksh.reddimg.files.FileStore;
-import com.jeetprksh.reddimg.logging.ReddimgLogger;
 
 import java.util.logging.Logger;
 
 public class Reddimg {
 
-  private static final Logger logger = ReddimgLogger.getLogger(Reddimg.class);
+  private static final Logger logger = Logger.getLogger(Reddimg.class.getName());
 
   public static void main(String[] args) throws Exception {
     FileStore fileStore = FileStore.create();

@@ -1,7 +1,5 @@
 package com.jeetprksh.reddimg.files;
 
-import com.jeetprksh.reddimg.logging.ReddimgLogger;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -9,7 +7,7 @@ import java.util.logging.Logger;
 
 public class FileStore {
 
-  private final Logger logger = ReddimgLogger.getLogger(FileStore.class);
+  private final Logger logger = Logger.getLogger(FileStore.class.getName());
 
   private final File appDirectory;
 

@@ -1,7 +1,6 @@
 package com.jeetprksh.reddimg.reddit;
 
 import com.google.common.collect.Maps;
-import com.jeetprksh.reddimg.logging.ReddimgLogger;
 import com.jeetprksh.reddimg.reddit.http.DownloadImageRequest;
 import com.jeetprksh.reddimg.reddit.http.GetSubredditLinksRequest;
 import com.jeetprksh.reddimg.reddit.http.model.ImageFile;
@@ -22,7 +21,7 @@ import java.util.stream.Stream;
 
 public class RedditService {
 
-  private final Logger logger = ReddimgLogger.getLogger(RedditService.class);
+  private final Logger logger = Logger.getLogger(RedditService.class.getName());
 
   private final String DEFAULT_CHUNK_SIZE = "20";
 

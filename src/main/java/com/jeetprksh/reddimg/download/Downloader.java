@@ -4,7 +4,6 @@ import com.jeetprksh.file.download.BatchFileDownloader;
 import com.jeetprksh.file.download.config.AllDownloads;
 import com.jeetprksh.file.download.config.DownloadSet;
 import com.jeetprksh.file.download.config.File;
-import com.jeetprksh.reddimg.logging.ReddimgLogger;
 import com.jeetprksh.reddimg.reddit.RedditService;
 import com.jeetprksh.reddimg.reddit.parser.Link;
 import com.jeetprksh.reddimg.reddit.parser.PostHint;
@@ -17,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class Downloader {
 
-  private final Logger logger = ReddimgLogger.getLogger(Downloader.class);
+  private final Logger logger = Logger.getLogger(Downloader.class.getName());
 
   private final RedditService redditService;
 

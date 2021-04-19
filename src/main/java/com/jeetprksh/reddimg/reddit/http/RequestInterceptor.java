@@ -1,7 +1,6 @@
 package com.jeetprksh.reddimg.reddit.http;
 
 import com.jeetprksh.reddimg.config.ReddimgConfig;
-import com.jeetprksh.reddimg.logging.ReddimgLogger;
 import org.apache.hc.core5.http.EntityDetails;
 import org.apache.hc.core5.http.HttpRequest;
 import org.apache.hc.core5.http.HttpRequestInterceptor;
@@ -11,7 +10,7 @@ import java.util.logging.Logger;
 
 public class RequestInterceptor implements HttpRequestInterceptor {
 
-  private final Logger logger = ReddimgLogger.getLogger(RequestInterceptor.class);
+  private final Logger logger = Logger.getLogger(RequestInterceptor.class.getName());
 
   @Override
   public void process(HttpRequest request,
